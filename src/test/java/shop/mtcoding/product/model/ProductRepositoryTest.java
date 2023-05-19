@@ -1,6 +1,5 @@
 package shop.mtcoding.product.model;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +14,8 @@ public class ProductRepositoryTest {
     @Autowired
     private ProductRepository productRepository;
 
-    ObjectMapper om = new ObjectMapper();
     @Test
-    public void findByUsernameAndPassword_test() throws Exception {
+    public void findAll_test() throws Exception {
         // given
 
         // when
@@ -28,5 +26,20 @@ public class ProductRepositoryTest {
         assertThat(productListPS.get(0).getId()).isEqualTo(1);
         assertThat(productListPS.get(0).getName()).isEqualTo("바나나");
         
+    }
+
+    @Test
+    public void findById_test() throws Exception {
+        // given
+        int id = 1;
+
+        // when
+        Product productPS = productRepository.findById(id);
+
+        // verify
+        assertThat(productPS.getId()).isEqualTo(1);
+        assertThat(productPS.getName()).isEqualTo("바나나");
+        assertThat(productPS.getPrice()).isEqualTo(3000);
+
     }
 }
