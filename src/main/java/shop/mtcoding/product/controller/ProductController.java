@@ -21,4 +21,9 @@ public class ProductController {
     public String saveForm() {
         return "product/saveForm";
     }
+
+    @GetMapping("/product/{id}/updateForm")
+    public String updateForm() {
+        return "product/updateForm";
+    }
 }
