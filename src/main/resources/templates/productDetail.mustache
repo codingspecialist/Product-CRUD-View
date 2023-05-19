@@ -1,0 +1,13 @@
+{{> layout/header}}
+<div class="container">
+        <div class="mb-3 mt-3">상품명 : 바나나</div>
+        <div class="mb-3 mt-3">상품가격 : 1000</div>
+        <div class="mb-3 mt-3">상품수량 : 100</div>
+        <span><a href="/product/edit" class="btn btn-warning">수정하러가기</a></span>
+    <span>
+	<form action="/product/delete" method="post">
+		<button class="btn btn-danger">삭제하기</button>
+	</form>
+	</span>
+</div>
+{{> layout/footer}}
