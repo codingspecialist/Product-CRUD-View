@@ -20,15 +20,31 @@ public class ProductController {
 
     @GetMapping({"/product", "/"})
     public String list(Model model) {
+        // 상품 전체 목록 조회
         List<Product> productList = productRepository.findAll();
+
+        // 모델에 저장
         model.addAttribute(productList);
+
+        // 페이지 리턴
         return "product/list";
     }
 
     @GetMapping("/product/{id}")
     public String detail(@PathVariable int id, Model model) {
+
+        // 해당 상품 조회
         Product product = productRepository.findById(id);
+
+        // 존재하지 않을 경우 에러페이지 리턴
+        if (product == null) {
+            return "redirect:/badRequest";
+        }
+
+        // 모델에 저장
         model.addAttribute(product);
+
+        // 페이지 리턴
         return "product/detail";
     }
 
@@ -39,28 +55,86 @@ public class ProductController {
 
     @GetMapping("/product/{id}/updateForm")
     public String updateForm(@PathVariable int id, Model model) {
+
+        // 해당 상품 조회
         Product product = productRepository.findById(id);
+
+        // 존재하지 않을 경우 에러페이지 리턴
+        if (product == null) {
+            return "redirect:/badRequest";
+        }
+
+        // 모델에 저장
         model.addAttribute(product);
+
+        // 페이지 리턴
         return "product/updateForm";
     }
 
     @PostMapping("product/add")
     public String save(ProductReqestDTO.ProductSaveReqDTO productSaveReqDTO) {
+
+        // 저장시 id 값을 받아오기 위해 Product 객체에 저장
         Product product = new Product(productSaveReqDTO);
-        productRepository.insert(product);
+
+        // DB 저장
+        int result = productRepository.insert(product);
+
+        // 저장 실패할 경우 에러페이지 리턴
+        if (result != 1) {
+            return "redirect:/serverError";
+        }
+
+        // 페이지 리턴
         return "redirect:/product/" + product.getId();
     }
 
     @PostMapping("/product/{id}/edit")
     public String update(@PathVariable int id ,ProductReqestDTO.ProductUpdateReqDTO productUpdateReqDTO) {
-        productUpdateReqDTO.setId(id);
-        productRepository.updateById(productUpdateReqDTO);
+
+        // 해당 상품 조회
+        Product productPS = productRepository.findById(id);
+
+        // 존재하지 않을 경우 에러페이지 리턴
+        if (productPS == null) {
+            return "redirect:/badRequest";
+        }
+
+        // id 값 DTO에 담기 (한번에 전달하기 위해서 사용)
+        productUpdateReqDTO.setId(productPS.getId());
+
+        // DB에 해당 ID 상품 업데이트
+        int result = productRepository.updateById(productUpdateReqDTO);
+
+        // 업데이트 실패할 경우 에러페이지 리턴
+        if (result != 1) {
+            return "redirect:/serverError";
+        }
+
+        // 페이지 리턴
         return "redirect:/product/" + productUpdateReqDTO.getId();
     }
 
     @PostMapping("/product/{id}/delete")
     public String delete(@PathVariable int id) {
-        productRepository.deleteById(id);
+
+        // 해당 상품 조회
+        Product productPS = productRepository.findById(id);
+
+        // 존재하지 않을 경우 에러페이지 리턴
+        if (productPS == null) {
+            return "redirect:/badRequest";
+        }
+
+        // 해당 ID 상품 삭제
+        int result = productRepository.deleteById(productPS.getId());
+
+        // 삭제 실패할 경우 에러페이지 리턴
+        if (result != 1) {
+            return "redirect:/serverError";
+        }
+
+        // 페이지 리턴
         return "redirect:/";
     }
 }
