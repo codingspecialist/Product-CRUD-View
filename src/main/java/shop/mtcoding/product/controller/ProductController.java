@@ -9,16 +9,16 @@ public class ProductController {
 
     @GetMapping({"/product", "/"})
     public String list() {
-        return "productList";
+        return "product/list";
     }
 
     @GetMapping("/product/{id}")
     public String detail(@PathVariable int id) {
-        return "productDetail";
+        return "product/detail";
     }
 
     @GetMapping("/product/saveForm")
     public String saveForm() {
-        return "saveForm";
+        return "product/saveForm";
     }
 }
