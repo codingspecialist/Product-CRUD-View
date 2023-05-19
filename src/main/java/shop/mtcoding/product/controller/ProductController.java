@@ -48,6 +48,13 @@ public class ProductController {
     public String save(ProductReqestDTO.ProductSaveReqDTO productSaveReqDTO) {
         Product product = new Product(productSaveReqDTO);
         productRepository.insert(product);
-        return "redirect:/product/"+product.getId();
+        return "redirect:/product/" + product.getId();
+    }
+
+    @PostMapping("/product/{id}/edit")
+    public String update(@PathVariable int id ,ProductReqestDTO.ProductUpdateReqDTO productUpdateReqDTO) {
+        productUpdateReqDTO.setId(id);
+        productRepository.updateById(productUpdateReqDTO);
+        return "redirect:/product/" + productUpdateReqDTO.getId();
     }
 }
