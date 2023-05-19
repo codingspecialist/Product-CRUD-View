@@ -14,4 +14,6 @@ public interface ProductRepository {
     Product findById(int id);
 
     int insert(Product product);
+
+    int updateById(ProductReqestDTO.ProductUpdateReqDTO productUpdateReqDTO);
 }

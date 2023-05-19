@@ -10,4 +10,12 @@ public class ProductReqestDTO {
         private Integer price;
         private Integer qty;
     }
+
+    @Getter @Setter @NoArgsConstructor @AllArgsConstructor
+    public static class ProductUpdateReqDTO {
+        private Integer id;
+        private String name;
+        private Integer price;
+        private Integer qty;
+    }
 }

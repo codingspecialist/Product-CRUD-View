@@ -56,4 +56,16 @@ public class ProductRepositoryTest {
         // verify
         assertThat(product.getId()).isEqualTo(3);
     }
+
+    @Test
+    public void updateById_test() throws Exception {
+        // given
+        ProductReqestDTO.ProductUpdateReqDTO productUpdateReqDTO = new ProductReqestDTO.ProductUpdateReqDTO(1,"망고", 1000, 100);
+
+        // when
+        int result = productRepository.updateById(productUpdateReqDTO);
+
+        // verify
+        assertThat(result).isEqualTo(1);
+    }
 }
