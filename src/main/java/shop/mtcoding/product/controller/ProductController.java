@@ -77,11 +77,11 @@ public class ProductController {
         // 저장시 id 값을 받아오기 위해 Product 객체에 저장
         Product product = new Product(productSaveReqDTO);
 
-        // DB 저장
-        int result = productRepository.insert(product);
-
-        // 저장 실패할 경우 에러페이지 리턴
-        if (result != 1) {
+        try {
+            // DB 저장
+            productRepository.insert(product);
+        } catch (Exception e) {
+            // 저장 실패할 경우 에러페이지 리턴
             return "redirect:/serverError";
         }
 
@@ -103,11 +103,11 @@ public class ProductController {
         // id 값 DTO에 담기 (한번에 전달하기 위해서 사용)
         productUpdateReqDTO.setId(productPS.getId());
 
-        // DB에 해당 ID 상품 업데이트
-        int result = productRepository.updateById(productUpdateReqDTO);
-
-        // 업데이트 실패할 경우 에러페이지 리턴
-        if (result != 1) {
+        try {
+            // DB에 해당 ID 상품 업데이트
+            productRepository.updateById(productUpdateReqDTO);
+        } catch (Exception e) {
+            // 업데이트 실패할 경우 에러페이지 리턴
             return "redirect:/serverError";
         }
 
@@ -126,11 +126,11 @@ public class ProductController {
             return "redirect:/badRequest";
         }
 
-        // 해당 ID 상품 삭제
-        int result = productRepository.deleteById(productPS.getId());
-
-        // 삭제 실패할 경우 에러페이지 리턴
-        if (result != 1) {
+        try {
+            // 해당 ID 상품 삭제
+            productRepository.deleteById(productPS.getId());
+        } catch (Exception e) {
+            // 삭제 실패할 경우 에러페이지 리턴
             return "redirect:/serverError";
         }
 
