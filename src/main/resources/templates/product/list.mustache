@@ -11,24 +11,14 @@
         </thead>
         <tbody>
 
+        {{#productList}}
         <tr>
-            <td>1</td>
-            <td>바나나</td>
-            <td>1000</td>
-            <td>100</td>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{price}}</td>
+            <td>{{qty}}</td>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>바나나</td>
-            <td>1000</td>
-            <td>100</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>바나나</td>
-            <td>1000</td>
-            <td>100</td>
-        </tr>
+        {{/productList}}
 
         </tbody>
     </table>
