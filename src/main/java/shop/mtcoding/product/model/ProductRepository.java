@@ -2,6 +2,7 @@ package shop.mtcoding.product.model;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import shop.mtcoding.product.dto.ProductReqestDTO;
 
 import java.util.List;
 
@@ -12,4 +13,5 @@ public interface ProductRepository {
 
     Product findById(int id);
 
+    int insert(Product product);
 }
