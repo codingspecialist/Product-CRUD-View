@@ -36,7 +36,9 @@ public class ProductController {
     }
 
     @GetMapping("/product/{id}/updateForm")
-    public String updateForm() {
+    public String updateForm(@PathVariable int id, Model model) {
+        Product product = productRepository.findById(id);
+        model.addAttribute(product);
         return "product/updateForm";
     }
 }
