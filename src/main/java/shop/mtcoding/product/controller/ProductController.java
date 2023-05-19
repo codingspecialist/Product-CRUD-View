@@ -57,4 +57,10 @@ public class ProductController {
         productRepository.updateById(productUpdateReqDTO);
         return "redirect:/product/" + productUpdateReqDTO.getId();
     }
+
+    @PostMapping("/product/{id}/delete")
+    public String delete(@PathVariable int id) {
+        productRepository.deleteById(id);
+        return "redirect:/";
+    }
 }

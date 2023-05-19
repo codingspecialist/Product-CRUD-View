@@ -24,4 +24,8 @@
             qty = #{qty}
         where id = #{id}
     </update>
+
+    <delete id="deleteById">
+        delete from product where id = #{id}
+    </delete>
 </mapper>
