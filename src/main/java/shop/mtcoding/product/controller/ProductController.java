@@ -24,7 +24,9 @@ public class ProductController {
     }
 
     @GetMapping("/product/{id}")
-    public String detail(@PathVariable int id) {
+    public String detail(@PathVariable int id, Model model) {
+        Product product = productRepository.findById(id);
+        model.addAttribute(product);
         return "product/detail";
     }
 
