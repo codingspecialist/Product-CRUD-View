@@ -5,8 +5,7 @@ import shop.mtcoding.product.dto.ProductReqestDTO;
 
 import java.sql.Timestamp;
 
-@Getter
-@Setter
+@Getter @Setter @NoArgsConstructor
 public class Product {
     private Integer id;
     private String name;

@@ -1,17 +1,17 @@
 {{> layout/header}}
 <div class="container">
-    <form>
+    <form method="post" action="/product/add">
         <div class="mb-3 mt-3">
-            상품명 : <input id="productName" type="text" placeholder="상품명을 적어주세요">
+            상품명 : <input name="name" type="text" placeholder="상품명을 적어주세요">
         </div>
         <div class="mb-3 mt-3">
-            상품가격 : <input id="productPrice" type="number"
+            상품가격 : <input name="price" type="number"
                           placeholder="상품 가격을 적어주세요">
         </div>
         <div class="mb-3 mt-3">
-            상품수량 : <input id="productQty" type="number" placeholder="상품 수량을 적어주세요">
+            상품수량 : <input name="qty" type="number" placeholder="상품 수량을 적어주세요">
         </div>
-        <button id="btnSave" type="button" class="btn btn-primary">상품등록완료</button>
+        <button type="submit" class="btn btn-primary">상품등록완료</button>
 
     </form>
 </div>
