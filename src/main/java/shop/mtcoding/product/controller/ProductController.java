@@ -16,4 +16,9 @@ public class ProductController {
     public String detail(@PathVariable int id) {
         return "productDetail";
     }
+
+    @GetMapping("/product/saveForm")
+    public String saveForm() {
+        return "saveForm";
+    }
 }
