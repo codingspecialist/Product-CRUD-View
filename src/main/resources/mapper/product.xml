@@ -5,27 +5,5 @@
 
 <mapper namespace="shop.mtcoding.product.model.ProductRepository">
 
-    <select id="findAll" resultType="shop.mtcoding.product.model.Product">
-        select * from product
-    </select>
 
-    <select id="findById" resultType="shop.mtcoding.product.model.Product">
-        select * from product where id = #{id}
-    </select>
-
-    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-        insert into product(name, price, qty, created_at) values( #{name}, #{price}, #{qty}, now())
-    </insert>
-
-    <update id="updateById">
-        update product
-        set name = #{name},
-            price = #{price},
-            qty = #{qty}
-        where id = #{id}
-    </update>
-
-    <delete id="deleteById">
-        delete from product where id = #{id}
-    </delete>
 </mapper>

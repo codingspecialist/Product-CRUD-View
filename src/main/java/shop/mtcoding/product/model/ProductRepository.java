@@ -8,14 +8,5 @@ import java.util.List;
 
 @Mapper
 public interface ProductRepository {
-
-    List<Product> findAll();
-
-    Product findById(int id);
-
-    int insert(Product product);
-
-    int updateById(ProductReqestDTO.ProductUpdateReqDTO productUpdateReqDTO);
-
-    int deleteById(int id);
+    // MyBatis 매핑 메서드 만들기
 }

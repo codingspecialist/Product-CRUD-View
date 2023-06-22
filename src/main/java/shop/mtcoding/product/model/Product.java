@@ -7,15 +7,5 @@ import java.sql.Timestamp;
 
 @Getter @Setter @NoArgsConstructor
 public class Product {
-    private Integer id;
-    private String name;
-    private Integer price;
-    private Integer qty;
-    private Timestamp createdAt;
-
-    public Product(ProductReqestDTO.ProductSaveReqDTO productSaveReqDTO) {
-        this.name = productSaveReqDTO.getName();
-        this.price = productSaveReqDTO.getPrice();
-        this.qty = productSaveReqDTO.getQty();
-    }
+    // 테이블 모델링 하기
 }
